@@ -6,8 +6,10 @@ import dlib
 import numpy as np
 import pytesseract
 
-# Absolute paths to the models
-MODEL_DIR = "/var/www/html/swiftearn-kyc/kyc_env/lib/python3.12/site-packages/face_recognition_models/models/"
+# Dynamic paths to the models (works regardless of project directory name)
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_DIR = os.path.dirname(_SCRIPT_DIR)
+MODEL_DIR = os.path.join(_PROJECT_DIR, "kyc_env", "lib", "python3.12", "site-packages", "face_recognition_models", "models") + os.sep
 SHAPE_PREDICTOR = os.path.join(MODEL_DIR, "shape_predictor_68_face_landmarks.dat")
 FACE_RECOG = os.path.join(MODEL_DIR, "dlib_face_recognition_resnet_model_v1.dat")
 
